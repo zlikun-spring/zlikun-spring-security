@@ -1,0 +1,33 @@
+apply plugin : "war"
+apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
+
+dependencies {
+    compile group: "javax.servlet", name: "javax.servlet-api", version: "${servletVersion}"
+    compile group: "javax.servlet", name: "jstl", version: "${jstlVersion}"
+    compile group: "org.springframework.security", name: "spring-security-core", version: "${springSecurityVersion}"
+    compile group: "org.springframework.security", name: "spring-security-config", version: "${springSecurityVersion}"
+    compile group: "org.springframework.security", name: "spring-security-web", version: "${springSecurityVersion}"
+}
+
+println("运行${project.name}工程 ...")
+
+gretty {
+    host = "saml.zlikun.com"
+    httpPort = 80
+    httpEnabled = true
+    httpsPort = 443
+    httpsEnabled = true
+    sslKeyStorePath = "${project.projectDir}/etc/saml.zlikun.com.keystore"
+    sslKeyStorePassword = "123456"
+    contextPath = ""
+    servletContainer = "jetty9"
+    loggingLevel = "INFO"
+    logDir = "${project.buildDir}/logs"
+    logFileName = "server.log"
+    onStart {
+        println("Server启动中 ...")
+    }
+    onStop {
+        println("Server停止中 ...")
+    }
+}
