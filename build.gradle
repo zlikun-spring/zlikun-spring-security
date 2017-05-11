@@ -1,3 +1,5 @@
+println "加载 root/build.gradle 配置 ..."
+
 configure(allprojects) { project ->
     group = "com.zlikun.spring"
     version = "1.0.0"
@@ -7,7 +9,8 @@ configure(allprojects) { project ->
     ext.servletVersion          = "3.1.0"
     ext.jstlVersion             = "1.2"
     ext.jettyVersion            = "9.2.21.v20170120"
-    ext.springVersion           = "4.3.5.RELEASE"
+    ext.jacksonVersion          = "2.8.8"
+    ext.springVersion           = "4.3.8.RELEASE"
     ext.springSecurityVersion   = "4.2.2.RELEASE"
     ext.gradleScriptDir = "${rootProject.projectDir}/gradle"
     apply plugin: "java"
