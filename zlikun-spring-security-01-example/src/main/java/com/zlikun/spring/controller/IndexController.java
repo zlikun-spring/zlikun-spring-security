@@ -21,4 +21,18 @@ public class IndexController extends ControllerBase {
         return model;
     }
 
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public ModelAndView user(HttpServletRequest request) {
+        logger.info("请求：{}" ,request.getRequestURI());
+        ModelAndView model = new ModelAndView("admin");
+        return model;
+    }
+
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public ModelAndView admin(HttpServletRequest request) {
+        logger.info("请求：{}" ,request.getRequestURI());
+        ModelAndView model = new ModelAndView("admin");
+        return model;
+    }
+
 }

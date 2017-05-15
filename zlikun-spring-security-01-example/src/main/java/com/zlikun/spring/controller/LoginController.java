@@ -1,5 +1,6 @@
 package com.zlikun.spring.controller;
 
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,11 +22,16 @@ public class LoginController extends ControllerBase {
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView toLogin(HttpServletRequest request ,@RequestParam(value = "error", required = false) String error) {
+    public ModelAndView toLogin(HttpServletRequest request
+            ,@RequestParam(value = "error", required = false) String error
+            ,@RequestParam(value = "logout", required = false) String logout) {
         logger.info("请求：{}" ,request.getRequestURI());
         ModelAndView model = new ModelAndView("login");
         if (error != null) {
             model.addObject("error", "Invalid username and password!");
+        }
+        if (logout != null) {
+            model.addObject("error", "You have been logged out .");
         }
 
         return model;
